@@ -1,3 +1,7 @@
+This version of MSPDebug has been modified to support TI's Code
+Composer Studio directly as a debugger. These modifications were
+written by Ian Thompson <ijt5@cornell.edu>.
+
 MSPDebug is mostly written by Daniel Beer <dlbeer@gmail.com>. Other
 people who have made significant contributions are listed here.
 

@@ -94,8 +94,10 @@ static const struct device_class *const driver_table[] = {
 };
 
 static const char *version_text =
-"MSPDebug version 0.22 - debugging tool for MSP430 MCUs\n"
+"MSPDebug-CCS version 0.22 - debugging tool for MSP430 MCUs.\n"
+"Modified to integrate with TI's Code Composer Studio\n"
 "Copyright (C) 2009-2013 Daniel Beer <dlbeer@gmail.com>\n"
+"Copyright (C) 2014      Ian Thompson <ijt5@cornell.edu>\n"
 "This is free software; see the source for copying conditions.  There is NO\n"
 "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR "
 "PURPOSE.\n";
