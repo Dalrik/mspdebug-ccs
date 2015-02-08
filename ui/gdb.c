@@ -140,7 +140,7 @@ static int write_registers(struct gdb_data *data, char *buf)
 			(hexval(buf[3]) << 8) |
 			(hexval(buf[0]) << 4) |
 			hexval(buf[1]);
-		buf += 4;
+		buf += 2*register_bytes;
 	}
 
 	if (device_setregs(regs) < 0)
