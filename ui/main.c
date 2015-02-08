@@ -66,6 +66,8 @@
 #define OPT_NO_RC		0x01
 #define OPT_EMBEDDED		0x02
 
+#define DEFAULT_DRIVER "rf2500"
+
 struct cmdline_args {
 	const char		*driver_name;
 	const char		*alt_config;
@@ -156,12 +158,15 @@ static void usage(const char *progname)
 "    --bsl-gpio-dtr\n"
 "        On some host (say RaspberryPi) defines a GPIO pin# to be used as DTR\n"
 "\n"
+"If this program is launched with gdbserver-style arguments (ie %s :2345),\n"
+"It will assume " DEFAULT_DRIVER " as the driver and run a gdb server on the given port\n"
+"\n"
 "Most drivers connect by default via USB, unless told otherwise via the\n"
 "-d option. By default, the first USB device found is opened.\n"
 "\n"
 "If commands are given, they will be executed. Otherwise, an interactive\n"
 "command reader is started.\n\n",
-		progname);
+		progname, progname);
 
 	printc("Available drivers are:\n");
 	for (i = 0; i < ARRAY_LEN(driver_table); i++) {
@@ -399,8 +404,13 @@ static int parse_cmdline_args(int argc, char **argv,
 		return -1;
 	}
 
-	args->driver_name = argv[optind];
-	optind++;
+    if (argv[optind][0] == ':') {
+        // This is a gdb launch. Use the default driver
+        args->driver_name = DEFAULT_DRIVER;
+    } else {
+        args->driver_name = argv[optind];
+        optind++;
+    }
 
 	return 0;
 }

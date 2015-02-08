@@ -73,6 +73,18 @@ static int do_command(char *arg, int interactive)
 		char translated[1024];
 		struct cmddb_record cmd;
 
+        if (cmd_text[0] == ':') {
+            char newcmdbuf[50];
+            // We're being launched as a gdb debugger
+            int port = atoi(cmd_text+1);
+            if (port < 1) {
+                printc_err("Error: Invalid debugger port %d", port);
+                return -1;
+            }
+            snprintf(newcmdbuf, sizeof(newcmdbuf), "gdb %d", port);
+            return do_command(newcmdbuf, interactive);
+        }
+
 		if (translate_alias(cmd_text, arg,
 				    translated, sizeof(translated)) < 0)
 			return -1;
