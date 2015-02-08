@@ -517,7 +517,8 @@ static int gdb_server(int port)
 		return -1;
 	}
 
-	printc("Bound to port %d. Now waiting for connection...\n", port);
+    // Need this message for CCS to see the debugger is ready
+	printc("Listening on port %d\n", port);
 
 	len = sizeof(addr);
 	client = sockets_accept(sock, (struct sockaddr *)&addr, &len);
