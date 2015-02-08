@@ -1,4 +1,4 @@
-MSPDebug
+MSPDebug-CCS
 ========
 
 MSPDebug is a free debugger for use with MSP430 MCUs. It supports
@@ -6,6 +6,12 @@ FET430UIF, eZ430, RF2500 and Olimex MSP430-JTAG-TINY programmers, as
 well as many other compatible devices. It can be used as a proxy for
 gdb or as an independent debugger with support for programming,
 disassembly and reverse engineering.
+
+This version of MSPDebug has been modified to interoperate better
+with TI's Code Composer Studio. It supports a gdbserver style launch
+option scheme, where the only argument is :port, port being the port
+number to run a gdb server on. This permits it to be directly used as
+a gdb server by CCS
 
 Features
 --------
